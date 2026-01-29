@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>Goals Team</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg">
+
+<div class="login-card">
+
+<h1>Goals Team</h1>
+<p>معاً نحقق أهدافنا الدراسية 🎯</p>
+
+<input id="studentName" placeholder="اكتب اسمك هنا">
+
+<button onclick="saveName()">دخول</button>
+
+<div style="margin-top:15px">
+
+<a href="https://www.instagram.com/goa.5ls" target="_blank"
+style="background:#E1306C;color:white;padding:8px 20px;border-radius:20px;text-decoration:none;margin:5px;display:inline-block">
+Instagram
+</a>
+
+<a href="https://www.tiktok.com/@goals.team8" target="_blank"
+style="background:black;color:white;padding:8px 20px;border-radius:20px;text-decoration:none;margin:5px;display:inline-block">
+TikTok
+</a>
+
+</div>
+
+<div class="about">
+Goals Team فريق طلابي من الصف الحادي عشر ✨<br>
+موقع يجمع كل موادك في مكان واحد 💯
+</div>
+
+</div>
+
+<script>
+function saveName(){
+ const name=document.getElementById("studentName").value;
+ if(!name) return alert("اكتب اسمك");
+ localStorage.setItem("studentName",name);
+ window.location="choose-subjects.html";
+}
+</script>
+
+</body>
+</html>
