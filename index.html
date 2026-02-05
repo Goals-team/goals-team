@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>Goals Team</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg">
+
+<div class="login-card">
+
+<h1>Goals Team</h1>
+<p>معاً نحقق أهدافنا الدراسية 🎯</p>
+
+<input id="studentName" placeholder="اكتب اسمك يا متميز\ة">
+
+<select id="grade" style="margin-top:10px;padding:10px;border-radius:10px;width:100%">
+<option value="">اختر الصف</option>
+<option value="10">الصف العاشر</option>
+<option value="11">الصف الحادي عشر</option>
+</select>
+
+<button onclick="start()">دخول</button>
+
+<div style="margin-top:15px">
+
+<a href="https://www.instagram.com/goa.5ls" target="_blank"
+style="background:#E1306C;color:white;padding:8px 20px;border-radius:20px;text-decoration:none;margin:5px;display:inline-block">
+Instagram
+</a>
+
+<a href="https://www.tiktok.com/@goals.team8" target="_blank"
+style="background:black;color:white;padding:8px 20px;border-radius:20px;text-decoration:none;margin:5px;display:inline-block">
+TikTok
+</a>
+
+</div>
+
+<div class="about">
+Goals Team فريق طلابي لخدمة طلاب الصفين العاشر والحادي عشر ✨<br>
+موقع متكامل يجمع كل ما تحتاجه في مكان واحد 💯
+</div>
+
+</div>
+
+<script>
+function start(){
+ const name=document.getElementById("studentName").value;
+ const grade=document.getElementById("grade").value;
+
+ if(!name) return alert("اكتب اسمك يا بطل");
+ if(!grade) return alert("من فضلك اختر الصف");
+
+ localStorage.setItem("studentName",name);
+ localStorage.setItem("grade",grade);
+
+ if(grade==="10"){
+    window.location="subjects10.html";
+ }else{
+    window.location="choose-subjects.html";
+ }
+}
+</script>
+
+</body>
+</html>

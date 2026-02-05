@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>مواد الصف العاشر - Goals Team</title>
+</head>
+
+<body class="bg">
+    <div class="top-white">
+        <div>⭐ النقاط: <span id="points">0</span></div>
+        <div>⏱ الوقت: <span id="time">0h 00m 00s</span></div>
+
+        <span class="link" onclick="location.href='duaa.html'">الأدعية</span>
+        <span class="link" onclick="location.href='calendar.html'">التقويم</span>
+        <span class="link" onclick="window.open('https://chat.openai.com')">ChatGPT</span>
+    </div>
+
+    <h2 style="text-align: center;">مواد الصف العاشر</h2>
+
+    <div class="grid">
+        <a class="card" href="https://drive.google.com/drive/folders/1531WgeDME5HsQiMyXQHx3MT_rHsm37o0?usp=drive_link" target="_blank">
+            <img src="chem10.jpeg"><span>كيمياء</span>
+        </a>
+        <a class="card" href="https://drive.google.com/drive/folders/1MxX96WZ9zwVcoW4-LaNpqP3WGniEMjjV?usp=drive_link" target="_blank">
+            <img src="physics10.jpeg"><span>فيزياء</span>
+        </a>
+        <a class="card" href="https://drive.google.com/drive/folders/1SXmC9cEwSZYjzUg5ttJDu0mHcTo4RxxH?usp=drive_link" target="_blank">
+            <img src="bio10.jpeg"><span>أحياء</span>
+        </a>
+        <a class="card" href="https://drive.google.com/drive/folders/1EiIUHzdMc-OAzHzNF3YMeNznZPzmMeb5?usp=drive_link" target="_blank">
+            <img src="math10.jpeg"><span>رياضيات</span>
+        </a>
+        <a class="card" href="https://drive.google.com/drive/folders/1QnYnFEPny_V5FyjAM1by0jCv0jnvpD7U?usp=drive_link" target="_blank">
+            <img src="arab10.jpeg"><span>عربي</span>
+        </a>
+        <a class="card" href="https://drive.google.com/drive/folders/1FCzvxdjO0MWZYlhixyN1jMC7JRAeOc44?usp=drive_link" target="_blank">
+            <img src="eng10.jpeg"><span>إنجليزي</span>
+        </a>
+        <a class="card" href="https://drive.google.com/drive/folders/1u_QOcsxDFumuDB3JcEa94CnD8H2gX_0c?usp=drive_link" target="_blank">
+            <img src="islam10.jpeg"><span>إسلامية</span>
+        </a>
+        <a class="card" href="https://drive.google.com/drive/folders/1PQM1s6cOfigG-l9UgoXA7bB0WOKN9-5u?usp=drive_link" target="_blank">
+            <img src="nation10.jpeg"><span>هذا وطني</span>
+        </a>
+    </div>
+
+    <script>
+        // --- برمجة الوقت والنقاط مع إظهار الثواني والحفظ المستمر ---
+
+        // 1. استعادة البيانات من الذاكرة لضمان الاستمرارية
+        let points = parseInt(localStorage.getItem("points") || 100);
+        let totalSeconds = parseInt(localStorage.getItem("seconds") || 0);
+
+        // 2. دالة لتحديث عرض الوقت بدقة (ساعات، دقائق، ثواني)
+        function updateUI() {
+            let h = Math.floor(totalSeconds / 3600);
+            let m = Math.floor((totalSeconds % 3600) / 60);
+            let s = totalSeconds % 60;
+
+            // تنسيق احترافي: 0h 00m 00s
+            document.getElementById("time").innerText = 
+                `${h}h ${(m < 10 ? "0" : "")}${m}m ${(s < 10 ? "0" : "")}${s}s`;
+            
+            document.getElementById("points").innerText = points;
+        }
+
+        // تحديث أولي فور الدخول
+        updateUI();
+
+        // 3. محرك العداد (يعمل كل ثانية واحدة)
+        setInterval(() => {
+            totalSeconds++;
+            localStorage.setItem("seconds", totalSeconds); // حفظ الثواني فوراً
+
+            // زيادة 5 نقاط لكل دقيقة (60 ثانية)
+            if (totalSeconds % 60 === 0) {
+                points += 5;
+                localStorage.setItem("points", points);
+            }
+
+            updateUI(); // تحديث الأرقام على الشاشة
+        }, 1000);
+    </script>
+</body>
+</html>
