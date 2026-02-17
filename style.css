@@ -120,3 +120,64 @@ border-radius:15px;
 text-align:center;
 cursor:pointer;
 }
+/* حركة للكروت */
+.card, .subject-box{
+transition:0.3s;
+}
+
+.card:hover, .subject-box:hover{
+transform:translateY(-8px) scale(1.03);
+box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+
+/* ظهور تدريجي للصفحة */
+.fade-in{
+opacity:0;
+transform:translateY(20px);
+animation:fadeIn .6s forwards;
+}
+
+@keyframes fadeIn{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* تكبير النقاط عند الزيادة */
+@keyframes pop{
+0%{transform:scale(1)}
+50%{transform:scale(1.3)}
+100%{transform:scale(1)}
+}
+
+.points-pop{
+animation:pop .4s;
+}
+
+/* انتقال ناعم بين الصفحات */
+body{
+transition:opacity .4s;
+}
+
+body.fade-out{
+opacity:0;
+}
+
+/* شريط تقدم */
+.progress{
+width:200px;
+height:10px;
+background:#ddd;
+border-radius:10px;
+overflow:hidden;
+margin:auto;
+}
+
+.progress-bar{
+height:100%;
+background:#3aa0ff;
+width:0%;
+transition:.4s;
+border-radius:10px;
+}
