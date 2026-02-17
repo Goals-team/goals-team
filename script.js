@@ -170,4 +170,30 @@ function saveName() {
 }
 
 updateStats();
+// ================= تأثير انتقال الصفحات =================
+function go(link){
+document.body.classList.add("fade-out");
+setTimeout(()=>{window.location=link},400);
+}
 
+// ================= تحريك النقاط عند الزيادة =================
+function animatePoints(){
+const p=document.getElementById("points");
+if(!p) return;
+p.classList.remove("points-pop");
+void p.offsetWidth;
+p.classList.add("points-pop");
+}
+
+// ================= تحديث شريط التقدم =================
+function updateProgress(){
+const bar=document.getElementById("progressBar");
+if(!bar) return;
+
+let points=Number(localStorage.getItem("points")||0);
+
+// كل 200 نقطة = مستوى جديد
+let percent=(points%200)/2;
+bar.style.width=percent+"%";
+}
+updateProgress();
