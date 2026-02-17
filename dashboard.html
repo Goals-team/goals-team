@@ -6,20 +6,27 @@
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg">
+<body class="bg fade-in">
 
+<!-- الشريط العلوي -->
 <div class="top-white">
 
 <div>⭐ <span id="points">0</span></div>
 <div>⏱ <span id="time">0</span></div>
 
-<span class="link" onclick="location.href='duaa.html'">الأدعية</span>
-<span class="link" onclick="location.href='calendar.html'">التقويم</span>
+<span class="link" onclick="go('duaa.html')">الأدعية</span>
+<span class="link" onclick="go('calendar.html')">التقويم</span>
 <span class="link" onclick="window.open('grades.pdf')">تقسيم الدرجات</span>
 <span class="link" onclick="window.open('https://chat.openai.com')">ChatGPT</span>
 
 </div>
 
+<!-- شريط التقدم -->
+<div class="progress">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+
+<!-- المواد -->
 <div class="grid" id="chosen"></div>
 
 <script src="script.js"></script>
