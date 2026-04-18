@@ -1,67 +1,146 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>Goals Team</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goals Team - صيانة مؤقتة</title>
+    <style>
+        /* إعدادات الخلفية المتدرجة مثل الصورة */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(180deg, #3a61a5 0%, #213a6b 100%);
+            background-attachment: fixed;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+
+        /* تصميم البطاقة البيضاء */
+        .card {
+            background: #ffffff;
+            width: 90%;
+            max-width: 450px;
+            padding: 40px 20px;
+            border-radius: 30px; /* زوايا منحنية مثل الصورة */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* تصميم العداد */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .time-box {
+            background: #f8f9fa;
+            border: 1px solid #eee;
+            padding: 15px;
+            border-radius: 15px;
+            min-width: 80px;
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #3a61a5;
+        }
+
+        .label {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* الأزرار التجميلية لتشبه تصميمك */
+        .btn-status {
+            display: inline-block;
+            background: #eef2f7;
+            padding: 10px 20px;
+            border-radius: 50px;
+            color: #3a61a5;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #999;
+            line-height: 1.6;
+        }
+    </style>
 </head>
+<body>
 
-<body class="bg">
+    <div class="card">
+        <div class="btn-status">الموقع في صيانة سريعة 🛠️</div>
+        <h1>Goals Team</h1>
+        <p class="subtitle">نعمل على تحسين تجربتكم الدراسية.. نعود قريباً!</p>
 
-<div class="login-card">
+        <div class="countdown-container">
+            <div class="time-box">
+                <span id="hours">24</span>
+                <div class="label">ساعة</div>
+            </div>
+            <div class="time-box">
+                <span id="minutes">00</span>
+                <div class="label">دقيقة</div>
+            </div>
+            <div class="time-box">
+                <span id="seconds">00</span>
+                <div class="label">ثانية</div>
+            </div>
+        </div>
 
-<h1>Goals Team</h1>
-<p>معاً نحقق أهدافنا الدراسية 🎯</p>
+        <footer>
+            فريق طلابي لخدمة طلاب الصف العاشر والحادي عشر <br>
+            ✨ جميع الحقوق محفوظة لـ Goals Team ✨
+        </footer>
+    </div>
 
-<input id="studentName" placeholder="اكتب اسمك يا متميز\ة">
+    <script>
+        // تحديد موعد النهاية (بعد 24 ساعة من الآن)
+        // ملاحظة: إذا أردت تاريخ محدد استبدل السطر التالي بـ:
+        // const countDownDate = new Date("Apr 19, 2026 18:00:00").getTime();
+        const countDownDate = new Date().getTime() + (24 * 60 * 60 * 1000);
 
-<select id="grade" style="margin-top:10px;padding:10px;border-radius:10px;width:100%">
-<option value="">اختر الصف</option>
-<option value="10">الصف العاشر</option>
-<option value="11">الصف الحادي عشر</option>
-</select>
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
 
-<button onclick="start()">دخول</button>
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-<div style="margin-top:15px">
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
 
-<a href="https://www.instagram.com/goa.5ls" target="_blank"
-style="background:#E1306C;color:white;padding:8px 20px;border-radius:20px;text-decoration:none;margin:5px;display:inline-block">
-Instagram
-</a>
-
-<a href="https://www.tiktok.com/@goals.team8" target="_blank"
-style="background:black;color:white;padding:8px 20px;border-radius:20px;text-decoration:none;margin:5px;display:inline-block">
-TikTok
-</a>
-
-</div>
-
-<div class="about">
-Goals Team فريق طلابي لخدمة طلاب الصفين العاشر والحادي عشر ✨<br>
-موقع متكامل يجمع كل ما تحتاجه في مكان واحد 💯
-</div>
-
-</div>
-
-<script>
-function start(){
- const name=document.getElementById("studentName").value;
- const grade=document.getElementById("grade").value;
-
- if(!name) return alert("اكتب اسمك يا بطل");
- if(!grade) return alert("من فضلك اختر الصف");
-
- localStorage.setItem("studentName",name);
- localStorage.setItem("grade",grade);
-
- if(grade==="10"){
-    window.location="subjects10.html";
- }else{
-    window.location="choose-subjects.html";
- }
-}
-</script>
+            if (distance < 0) {
+                clearInterval(timer);
+                document.querySelector(".card").innerHTML = "<h1>عدنا للعمل!</h1><p>تفضل بزيارة الموقع الآن</p>";
+            }
+        }, 1000);
+    </script>
 
 </body>
 </html>
