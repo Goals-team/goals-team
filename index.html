@@ -1,147 +1,69 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goals Team - صيانة مؤقتة</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* إضافة تنسيقات العداد لتناسب تصميم البطاقة */
-        .countdown-section {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
-        }
-        .time-box {
-            background: #f0f2f5;
-            padding: 10px;
-            border-radius: 12px;
-            min-width: 65px;
-            border: 1px solid #ddd;
-        }
-        .time-box span {
-            display: block;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #3a61a5;
-        }
-        .label {
-            font-size: 0.7rem;
-            color: #777;
-        }
-        .maintenance-msg {
-            background: #fff3cd;
-            color: #856404;
-            padding: 10px;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-        /* إخفاء عناصر الدخول أثناء الصيانة */
-        #loginFields { display: none; }
-    </style>
+<meta charset="UTF-8">
+<title>Goals Team</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bg">
 
 <div class="login-card">
 
-    <h1>Goals Team</h1>
-    <p>معاً نحقق أهدافنا الدراسية 🎯</p>
+<h1>Goals Team</h1>
+<p>معاً نحقق أهدافنا الدراسية 🎯</p>
 
-    <div id="maintenanceSection">
-        <div class="maintenance-msg">الموقع تحت الصيانة لتطوير خدماتنا لكم 🛠️</div>
-        <p>سنعود للعمل خلال:</p>
-        <div class="countdown-section">
-            <div class="time-box">
-                <span id="hours">00</span>
-                <div class="label">ساعة</div>
-            </div>
-            <div class="time-box">
-                <span id="minutes">00</span>
-                <div class="label">دقيقة</div>
-            </div>
-            <div class="time-box">
-                <span id="seconds">00</span>
-                <div class="label">ثانية</div>
-            </div>
-        </div>
-    </div>
+<input id="studentName" placeholder="اكتب اسمك يا متميز\ة">
 
-    <div id="loginFields">
-        <input id="studentName" placeholder="اكتب اسمك يا متميز\ة" style="width:100%; padding:10px; border-radius:10px; border:1px solid #ccc;">
-        
-        <select id="grade" style="margin-top:10px; padding:10px; border-radius:10px; width:100%">
-            <option value="">اختر الصف</option>
-            <option value="10">الصف العاشر</option>
-            <option value="11">الصف الحادي عشر</option>
-        </select>
+<select id="grade" style="margin-top:10px;padding:10px;border-radius:10px;width:100%">
+<option value="">اختر الصف</option>
+<option value="10">الصف العاشر</option>
+<option value="11">الصف الحادي عشر</option>
+</select>
 
-        <button onclick="start()" style="width:100%; margin-top:15px; padding:10px; background:#3a61a5; color:white; border:none; border-radius:10px; cursor:pointer;">دخول</button>
-    </div>
+<button onclick="start()">دخول</button>
 
-    <div style="margin-top:15px">
-        <a href="https://www.instagram.com/goa.5ls" target="_blank"
-        style="background:#E1306C;color:white;padding:8px 20px;border-radius:20px;text-decoration:none;margin:5px;display:inline-block">
-        Instagram
-        </a>
+<div style="margin-top:15px">
 
-        <a href="https://www.tiktok.com/@goals.team8" target="_blank"
-        style="background:black;color:white;padding:8px 20px;border-radius:20px;text-decoration:none;margin:5px;display:inline-block">
-        TikTok
-        </a>
-    </div>
+<a href="https://www.instagram.com/goa.5ls" target="_blank"
+style="background:#E1306C;color:white;padding:8px 20px;border-radius:20px;text-decoration:none;margin:5px;display:inline-block">
+Instagram
+</a>
 
-    <div class="about">
-        Goals Team فريق طلابي لخدمة طلاب الصفين العاشر والحادي عشر ✨<br>
-        موقع متكامل يجمع كل ما تحتاجه في مكان واحد 💯
-    </div>
+<a href="https://www.tiktok.com/@goals.team8" target="_blank"
+style="background:black;color:white;padding:8px 20px;border-radius:20px;text-decoration:none;margin:5px;display:inline-block">
+TikTok
+</a>
+
+</div>
+
+<div class="about">
+Goals Team فريق طلابي لخدمة طلاب الصفين العاشر والحادي عشر ✨<br>
+موقع متكامل يجمع كل ما تحتاجه في مكان واحد 💯
+</div>
 
 </div>
 
 <script>
-// --- برمجة العداد التنازلي ---
-const countDownDate = new Date().getTime() + (24 * 60 * 60 * 1000);
-
-const x = setInterval(function() {
-    const now = new Date().getTime();
-    const distance = countDownDate - now;
-
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    document.getElementById("hours").innerHTML = hours;
-    document.getElementById("minutes").innerHTML = minutes;
-    document.getElementById("seconds").innerHTML = seconds;
-
-    // عند انتهاء الوقت: اخفِ العداد واظهر الدخول
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("maintenanceSection").style.display = "none";
-        document.getElementById("loginFields").style.display = "block";
-    }
-}, 1000);
-
-// --- برمجة زر الدخول الأصلية الخاصة بك ---
 function start(){
-    const name = document.getElementById("studentName").value;
-    const grade = document.getElementById("grade").value;
+ const name=document.getElementById("studentName").value;
+ const grade=document.getElementById("grade").value;
 
-    if(!name) return alert("اكتب اسمك يا بطل");
-    if(!grade) return alert("من فضلك اختر الصف");
+ if(!name) return alert("اكتب اسمك يا بطل");
+ if(!grade) return alert("من فضلك اختر الصف");
 
-    localStorage.setItem("studentName", name);
-    localStorage.setItem("grade", grade);
+ localStorage.setItem("studentName",name);
+ localStorage.setItem("grade",grade);
 
-    if(grade === "10"){
-        window.location = "subjects10.html";
-    } else {
-        window.location = "choose-subjects.html";
-    }
+ if(grade==="10"){
+    window.location="subjects10.html";
+ }else{
+    window.location="choose-subjects.html";
+ }
 }
 </script>
 
 </body>
 </html>
+
+
